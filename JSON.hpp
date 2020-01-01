@@ -363,6 +363,19 @@ namespace s3d
 
 		const JSON access(StringView jsonPointer) const;
 
+		void clear() const;
+
+		void erase(StringView name);
+
+		// [Siv3D ToDo]
+		// void erase(???); 他のオーバーロード
+
+		// [Siv3D ToDo]
+		//[[nodiscard]] iterator find(const StringView name)
+
+		// [Siv3D ToDo]
+		//[[nodiscard]] const_iterator find(const StringView name)
+
 		[[nodiscard]] iterator begin();
 
 		[[nodiscard]] const_iterator begin() const;

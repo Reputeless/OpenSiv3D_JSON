@@ -654,6 +654,42 @@ namespace s3d
 		throw Error(U"JSON::access(): Invalid JSON type");
 	}
 
+	void JSON::clear() const
+	{
+		if (!m_isValid)
+		{
+			return;
+		}
+
+		m_detail->get().clear();
+	}
+
+	void JSON::erase(const StringView name)
+	{
+		if (!m_isValid)
+		{
+			return;
+		}
+
+		const std::string key = Unicode::ToUTF8(name);
+
+		m_detail->get().erase(key);
+	}
+
+	//JSON::iterator JSON::find(const StringView name)
+	//{
+	//	const std::string key = Unicode::ToUTF8(name);
+
+	//	return iterator(detail::JSONIteratorDetail(m_detail->get().find(key)));
+	//}
+
+	//JSON::const_iterator JSON::find(const StringView name) const
+	//{
+	//	const std::string key = Unicode::ToUTF8(name);
+
+	//	return const_iterator(detail::JSONConstIteratorDetail(m_detail->get().find(key)));
+	//}
+
 	JSON::iterator JSON::begin()
 	{
 		return iterator(detail::JSONIteratorDetail(m_detail->get().begin()));
